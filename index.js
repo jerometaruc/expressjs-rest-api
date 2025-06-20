@@ -17,28 +17,38 @@ app.get('/', (req, res) => {
     res.send("Hello from node API Server");
 });
 
-// Route to create a new product in the database
+// Get all products
+// Endpoint: GET /api/products
+// Fetches all product documents from the database
+app.get('/api/products', async (req, res) => {
+    try {
+        const products = await Product.find({});
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Create a new product
+// Endpoint: POST /api/products
+// Inserts a new product into the database
 app.post('/api/products', async (req, res) => {
     try {
-        // Create a new product using data from the request body
         const product = await Product.create(req.body);
-        // Respond with the created product
         res.status(200).json(product);
     } catch (error) {
-        // Handle errors (e.g., validation issues)
-        res.status(500).json({message: error.message});
+        res.status(500).json({ message: error.message });
     }
-})
+});
 
 // Connect to MongoDB using the URI in .env
 mongoose.connect(process.env.MONGODB_URI)
-.then(() => {
-    console.log("Connected to MongoDB");
-    // Start server only after DB connection is successful
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    .then(() => {
+        console.log("Connected to MongoDB");
+        app.listen(3000, () => {
+            console.log("Server is running on port 3000");
+        });
+    })
+    .catch((err) => {
+        console.error("MongoDB connection error:", err);
     });
-})
-.catch(err => {
-    console.error("MongoDB connection error:", err);
-});
