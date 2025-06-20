@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 
 // Get all products
 // Endpoint: GET /api/products
-// Fetches all product documents from the database
 app.get('/api/products', async (req, res) => {
     try {
         const products = await Product.find({});
@@ -29,9 +28,20 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
+// Get a single product by ID
+// Endpoint: GET /api/product/:id
+app.get('/api/product/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const product = await Product.findById(id);
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 // Create a new product
 // Endpoint: POST /api/products
-// Inserts a new product into the database
 app.post('/api/products', async (req, res) => {
     try {
         const product = await Product.create(req.body);
