@@ -29,8 +29,8 @@ app.get('/api/products', async (req, res) => {
 });
 
 // Get a single product by ID
-// Endpoint: GET /api/product/:id
-app.get('/api/product/:id', async (req, res) => {
+// Endpoint: GET /api/products/:id
+app.get('/api/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findById(id);
@@ -52,8 +52,8 @@ app.post('/api/products', async (req, res) => {
 });
 
 // Update a product
-// Endpoint: PUT /api/product/:id
-app.put('/api/product/:id', async (req, res) => {
+// Endpoint: PUT /api/products/:id
+app.put('/api/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findByIdAndUpdate(id, req.body);
@@ -68,15 +68,15 @@ app.put('/api/product/:id', async (req, res) => {
 });
 
 // Delete a product
-// Endpoint: Delete /api/product/:id
-app.delete('/api/product/:id', async (req, res) => {
+// Endpoint: Delete /api/products/:id
+app.delete('/api/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findByIdAndDelete(id);
         if (!product) {
             return res.status(404).json({ message: "Product not found" });
         }
-        res.status(200).json({ message: "Product deleted succesfully" });
+        res.status(200).json({ message: "Product deleted successfully" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
