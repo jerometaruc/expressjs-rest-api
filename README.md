@@ -1,6 +1,6 @@
-# Simple CRUD REST API
+# CRUD RESTful API
 
-A RESTful API built with **Node.js**, **Express.js**, and **MongoDB**
+A CRUD RESTful API built with **Node.js**, **Express.js**, and **MongoDB**
 
 ---
 
@@ -44,8 +44,8 @@ npm install
 # Create a .env file
 touch .env
 
-# .env
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
+# Add your environment variable to .env
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/<dbname>
 
 # Start development server
 npm run dev
