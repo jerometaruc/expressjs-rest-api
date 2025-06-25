@@ -1,12 +1,12 @@
-# CRUD RESTful API
+# Express.js REST API
 
-A CRUD RESTful API built with **Node.js**, **Express.js**, and **MongoDB**
+A REST API built with **Express.js**, **Node.js**, and **MongoDB**
 
 ---
 
 ## Features
 
-- Simple CRUD operations for products
+- CRUD operations for products
 - Modular architecture (routes, controllers, models)
 - MongoDB connection via **Mongoose**
 - Local testing via **Thunder Client**
@@ -17,7 +17,6 @@ A CRUD RESTful API built with **Node.js**, **Express.js**, and **MongoDB**
 
 | Method | Endpoint             | Description              |
 |--------|----------------------|--------------------------|
-| GET    | `/`                  | Test root route          |
 | GET    | `/api/products`      | Get all products         |
 | GET    | `/api/products/:id`  | Get a product by ID      |
 | POST   | `/api/products`      | Create a new product     |
@@ -28,8 +27,8 @@ A CRUD RESTful API built with **Node.js**, **Express.js**, and **MongoDB**
 
 ## Tech Stack
 
-- Node.js
 - Express.js
+- Node.js
 - MongoDB
 - Thunder Client
 
